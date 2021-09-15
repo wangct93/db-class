@@ -1,0 +1,20 @@
+{
+  "name": "db-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node src",
+    "babel": "node scripts/babel"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@wangct/mysql": "^1.0.3",
+    "@wangct/node-util": "^1.0.9",
+    "@wangct/util": "^1.0.17"
+  },
+  "devDependencies": {
+    "@wangct/babel": "^1.0.4"
+  }
+}
