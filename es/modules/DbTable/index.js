@@ -99,6 +99,10 @@ class DbTable{
     });
   }
 
+  delete(...args){
+    return this.remove(...args);
+  }
+
   update(data){
     const key = this.getPrimaryField();
     return this.getMysql().update({
@@ -110,6 +114,13 @@ class DbTable{
       where:{
         [key]:data[key],
       },
+    });
+  }
+
+  search(data){
+    return this.getMysql().search({
+      table:this.getTableName(),
+      where:data,
     });
   }
 
