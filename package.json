@@ -1,18 +1,24 @@
 {
-  "name": "db-tree",
+  "name": "@wangct/db-class",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "es/index.js",
+  "files": [
+    "es"
+  ],
   "scripts": {
     "test": "node src",
-    "babel": "node scripts/babel"
+    "babel": "node scripts/babel",
+    "pu-cmd": "npm pu --registry https://registry.npmjs.org/ --access public",
+    "pu": "node scripts/publish"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@wangct/mysql": "^1.0.3",
     "@wangct/node-util": "^1.0.9",
-    "@wangct/util": "^1.0.17"
+    "@wangct/util": "^1.0.17",
+    "moment": "^2.29.1"
   },
   "devDependencies": {
     "@wangct/babel": "^1.0.4"

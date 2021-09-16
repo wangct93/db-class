@@ -3,7 +3,10 @@ const {DbTree} = require("../es");
 
 
 const tree = new DbTree({
-  mysql:mysqlConfig,
+  mysql:{
+    ...mysqlConfig,
+    table:'wwww',
+  },
   onCreateTable:async () => {
     const data = await tree.create({
       node_name:'www'
@@ -12,6 +15,12 @@ const tree = new DbTree({
       node_id:data.insertId,
       node_name:'wd',
     });
+    const child = await tree.create({
+      node_name:'wwww',
+      parent:data.insertId,
+    });
+    const info = await tree.getDetail(child.insertId);
+    console.log(info);
   },
 });
 
