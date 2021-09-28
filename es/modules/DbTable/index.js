@@ -117,10 +117,24 @@ class DbTable{
     });
   }
 
-  search(data){
+  search(data,options = {}){
+    if(!options.fields){
+      const timeFields = this.getTableFields().filter((item) => item.type === 'datetime');
+      options.fields = [
+        '*',
+        ...timeFields.map((item) => ({
+          field:item.field,
+          isTime:true,
+        })),
+      ];
+    }
+
     return this.getMysql().search({
       table:this.getTableName(),
       where:data,
+      orderField:'create_time',
+      orderDesc:true,
+      ...options,
     });
   }
 
@@ -131,8 +145,11 @@ class DbTable{
     return data[this.getPrimaryField()];
   }
 
-  getDetail(id){
+  async getDetail(id){
     id = this.getId(id);
+    if(id == null){
+      return null;
+    }
     return this.getMysql().search({
       table:this.getTableName(),
       where:{
